@@ -11,10 +11,13 @@ Getting started:
 	-> zimlets/biz_vnc_template/src/biz_vnc_template.* files
 	-> zimlets/biz_vnc_template/Makefile: variable ZIMLET_NAME
 
+    * user-visible texts (eg. label and description) are stored in
+      the translation property files
+
     * all files in zimlets/$(ZIMLET_NAME)/src will be packed into zipfile
 
     * in the xml file, the symbols @ZIMLET_NAME@, @ZIMLET_VERSION@ and
-      @ZIMLET_TITLE@ will be replaced by the according Makefile variables
+      will be replaced by the according Makefile variables
 
     * the version number comes from conf.mk
 

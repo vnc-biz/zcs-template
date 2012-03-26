@@ -1,2 +1,2 @@
-<zimlet name="@ZIMLET_NAME@" version="@ZIMLET_VERSION@" description="@ZIMLET_TITLE@ (@ZIMLET_VERSION@)">
+<zimlet name="@ZIMLET_NAME@" version="@ZIMLET_VERSION@" label="${msg.zimletLabel}" description="${msg.zimletDescription} (@ZIMLET_VERSION@)">
 </zimlet>
