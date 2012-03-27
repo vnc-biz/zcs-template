@@ -1,10 +1,13 @@
 
-DISTDIR=dist
+TOPDIR=.
+include $(TOPDIR)/conf.mk
 
 all:
+	@$(MAKE) -C scripts all
 	@$(MAKE) -C zimlets all
+	@tar -czf $(DISTFILE) -C $(DISTPREFIX) .
 
 clean:
-	@mkdir -p $(DISTDIR)
+	@$(MAKE) -C scripts clean
 	@$(MAKE) -C zimlets clean
-	@rm -Rf dist
+	@rm -Rf $(DISTPREFIX)
