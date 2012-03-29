@@ -1,15 +1,18 @@
 
 include $(TOPDIR)/conf.mk
 
+COMPILE_JSP?=$(TOPDIR)/compile-jsp
 ZIMLET_VERSION=$(VERSION)$(VERSION_SUFFIX)
 ZIMLET_ZIP=$(DISTDIR)/zimlet/$(ZIMLET_NAME).zip
 
+JSP_CLASSPATH=`echo "$(JSP_BUILD_JARS)" | tr ' ' ':'`
+
 all:	build
 
-build:  $(ZIMLET_ZIP)
+build:  jsp $(ZIMLET_ZIP)
 
 clean:
-	@rm -Rf $(ZIMLET_ZIP) tmp
+	@rm -Rf $(ZIMLET_ZIP) tmp _jspc_tmp
 	@rmdir `dirname "$(ZIMLET_ZIP)"` 2>/dev/null || true
 
 $(ZIMLET_ZIP):	src/*	src/$(ZIMLET_NAME).xml src/$(ZIMLET_NAME).properties src/$(ZIMLET_NAME)_de.properties
@@ -22,3 +25,7 @@ $(ZIMLET_ZIP):	src/*	src/$(ZIMLET_NAME).xml src/$(ZIMLET_NAME).properties src/$(
 	    > tmp/$(ZIMLET_NAME).xml
 	@zip -j $(ZIMLET_ZIP) tmp/*
 	@rm -Rf tmp
+
+
+jsp:
+	@for i in `find -name "*.jsp"` ; do JSP_CLASSPATH="$(JSP_CLASSPATH)" $(COMPILE_JSP) $$i ; done
