@@ -1,5 +1,15 @@
-VERSION=0.0.2
+VERSION=1.0.0
 PACKAGE=zimlet-template
+MAINTAINER=Enrico Weigelt <enrico.weigelt@vnc.biz>
+SECTION=base
+ARCHITECTURE=All
+PRIORITY=optional
+DEPENDS=__NONE__
+DESCRIPTION=Zimlet package template
 DISTPREFIX=$(TOPDIR)/dist
 DISTDIR=$(DISTPREFIX)/$(PACKAGE)-$(VERSION)
 DISTFILE=$(DISTPREFIX)/$(PACKAGE)-$(VERSION).tar.gz
+JAVA?=java
+JAR?=jar
+JAVAC?=javac
+IMAGE_ROOT=$(TOPDIR)/image

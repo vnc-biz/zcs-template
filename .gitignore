@@ -1,3 +1,9 @@
 /dist
 /zimlets/biz_vnc_template/tmp/
 _jspc_tmp
+classes
+/src/lib-vnc-common/zcs-lib-vnc-common.jar
+/src/lib-vnc-template/zcs-lib-vnc-common.jar
+/image
+/zimlets.list
+*.deb
