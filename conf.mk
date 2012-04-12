@@ -13,3 +13,5 @@ JAVA?=java
 JAR?=jar
 JAVAC?=javac
 IMAGE_ROOT=$(TOPDIR)/image
+REDMINE_UPLOAD_PROJECT=zcs-extension-template
+REDMINE_UPLOAD_URL=https://redmine.vnc.biz/redmine/

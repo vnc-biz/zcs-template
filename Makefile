@@ -32,3 +32,16 @@ $(DEBDIR)/control:	control.in
 clean:
 	@$(MAKE) -C src clean
 	@rm -Rf $(DISTPREFIX) $(IMAGE_ROOT) $(DEBFILE) zimlets.list
+
+upload:	all
+	@if [ ! "$(REDMINE_UPLOAD_USER)" ]; then echo "REDMINE_UPLOAD_USER environment variable must be set" ; exit 1 ; fi
+	@if [ ! "$(REDMINE_UPLOAD_PASSWORD)" ]; then echo "REDMINE_UPLOAD_PASSWORD environment variable must be set" ; exit 1 ; fi
+	@if [ ! "$(REDMINE_UPLOAD_URL)" ]; then echo "REDMINE_UPLOAD_URL variable must be set" ; exit 1 ; fi
+	@if [ ! "$(REDMINE_UPLOAD_PROJECT)" ]; then echo "REDMINE_UPLOAD_PROJECT variable must be set" ; exit 1 ; fi
+	@upload_file_to_redmine.py		\
+		-f $(DEBFILE)			\
+		-l $(REDMINE_UPLOAD_URL)	\
+		-u $(REDMINE_UPLOAD_USER)	\
+		-w $(REDMINE_UPLOAD_PASSWORD)	\
+		-p $(REDMINE_UPLOAD_PROJECT)	\
+		-d "$(DEBFILE)"
