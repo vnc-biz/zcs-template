@@ -1,16 +1,34 @@
 
 include $(TOPDIR)/conf.mk
 
+ifeq ($(ZCS_LIB_JARS),)
 IMPORT_CP=`[ -d lib ] && find lib -name "*.jar" -exec "echo" "-n" "{}:" ";"`
+else
+IMPORT_ZCS=$(addprefix $(ZIMBRA_BUILD_ROOT)/lib/jars/,$(ZCS_LIB_JARS))
+IMPORT_CP=`[ -d lib ] && find lib -name "*.jar" -exec "echo" "-n" "{}:" ";" ; find $(IMPORT_ZCS) -exec "echo" "-n" "{}:" ";"`
+endif
+
 SRCS=`find -L src -name "*.java"`
 
 ZIMLET_USER_JARDIR=mailboxd/webapps/zimbra/WEB-INF/lib
 ZIMLET_ADMIN_JARDIR=mailboxd/webapps/zimbraAdmin/WEB-INF/lib
 ZIMLET_SERVICE_JARDIR=mailboxd/webapps/service/WEB-INF/lib
+ZIMLET_LIB_JARDIR=lib/jars
 
-all:	build
+all:	check-1	build
 
-build:	install_user install_admin install_service
+build:	install_user install_admin install_service install_lib
+
+ifeq ($(ZIMBRA_BUILD_ROOT),)
+ZIMBRA_BUILD_ROOT=$(HOME)
+check-1:
+	@echo
+	@echo "ZIMBRA_BUILD_ROOT is not set. assuming $$HOME"
+	@echo
+else
+check-1:
+	@true
+endif
 
 ifeq ($(INSTALL_USER),y)
 install_user:	$(JAR_FILE_NAME)
@@ -36,6 +54,15 @@ install_service:	$(JAR_FILE_NAME)
 	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_SERVICE_JARDIR)
 else
 install_service:
+	@echo -n
+endif
+
+ifeq ($(INSTALL_LIB),y)
+install_lib:		$(JAR_FILE_NAME)
+	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
+	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
+else
+install_lib:
 	@echo -n
 endif
 
