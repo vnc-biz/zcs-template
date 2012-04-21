@@ -12,10 +12,14 @@ all:	check-depend $(DEBFILE)
 prepare:
 	@echo -n > $(TOPDIR)/zimlets.list
 
+build-scripts:
+	@mkdir -p $(INSTALL_DIR)
+	@[ -f scripts/mailboxd-db-schema.sql ] && cp scripts/mailboxd-db-schema.sql $(INSTALL_DIR)
+
 build-zimlets:	prepare
 	@$(MAKE) -C src all
 
-$(DEBFILE)::	$(DEBDIR)/control build-zimlets
+$(DEBFILE)::	$(DEBDIR)/control build-scripts build-zimlets
 	@dpkg --build $(IMAGE_ROOT) .
 
 $(DEBDIR)/control:	control.in

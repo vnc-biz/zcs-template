@@ -3,7 +3,7 @@ include $(TOPDIR)/conf.mk
 
 COMPILE_JSP?=$(TOPDIR)/compile-jsp
 ZIMLET_VERSION=$(VERSION)$(VERSION_SUFFIX)
-ZIMLET_ZIP=$(IMAGE_ROOT)/zimlets-install/$(PACKAGE)-$(VERSION)/$(ZIMLET_NAME).zip
+ZIMLET_ZIP=$(INSTALL_DIR)/$(ZIMLET_NAME).zip
 
 JSP_CLASSPATH=`echo "$(JSP_BUILD_JARS)" | tr ' ' ':'`
 

@@ -13,5 +13,6 @@ JAVA?=java
 JAR?=jar
 JAVAC?=javac
 IMAGE_ROOT=$(TOPDIR)/image
+INSTALL_DIR=$(IMAGE_ROOT)/zimlets-install/$(PACKAGE)
 REDMINE_UPLOAD_PROJECT=zcs-extension-template
 REDMINE_UPLOAD_URL=https://redmine.vnc.biz/redmine/
