@@ -15,6 +15,8 @@ prepare:
 build-scripts:
 	@mkdir -p $(INSTALL_DIR)
 	@[ -f scripts/mailboxd-db-schema.sql ] && cp scripts/mailboxd-db-schema.sql $(INSTALL_DIR)
+	@[ -f scripts/post-install.sh        ] && \
+		cp scripts/post-install.sh $(INSTALL_DIR) && chmod +x $(INSTALL_DIR)/post-install.sh
 
 build-zimlets:	prepare
 	@$(MAKE) -C src all
