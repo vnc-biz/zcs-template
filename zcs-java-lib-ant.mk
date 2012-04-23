@@ -30,6 +30,7 @@ ifeq ($(BUILD_ANT_SUBDIR),)
 endif
 
 install:
+	@true
 ifeq ($(INSTALL_USER),y)
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)
 	@cp $(BUILD_ANT_JARFILE) $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)

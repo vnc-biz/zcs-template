@@ -17,7 +17,7 @@ ZIMLET_LIB_JARDIR=lib/jars
 
 all:	check-1	build
 
-build:	install_user install_admin install_service install_lib
+build:	install
 
 ifeq ($(ZIMBRA_BUILD_ROOT),)
 ZIMBRA_BUILD_ROOT=$(HOME)
@@ -30,40 +30,23 @@ check-1:
 	@true
 endif
 
+install:	$(JAR_FILE_NAME)
+	@true
 ifeq ($(INSTALL_USER),y)
-install_user:	$(JAR_FILE_NAME)
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)
 	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)
-else
-install_user:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_ADMIN),y)
-install_admin:	$(JAR_FILE_NAME)
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_ADMIN_JARDIR)
 	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_ADMIN_JARDIR)
-else
-install_admin:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_SERVICE),y)
-install_service:	$(JAR_FILE_NAME)
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_SERVICE_JARDIR)
 	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_SERVICE_JARDIR)
-else
-install_service:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_LIB),y)
-install_lib:		$(JAR_FILE_NAME)
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
 	@cp $(JAR_FILE_NAME) $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
-else
-install_lib:
-	@echo -n
 endif
 
 clean:

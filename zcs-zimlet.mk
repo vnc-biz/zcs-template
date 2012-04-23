@@ -1,9 +1,9 @@
 
 include $(TOPDIR)/conf.mk
 
-COMPILE_JSP?=$(TOPDIR)/compile-jsp
+COMPILE_JSP?=$(ZIMBRA_BUILD_ROOT)/bin/zm_check_jsp
 ZIMLET_VERSION=$(VERSION)$(VERSION_SUFFIX)
-ZIMLET_ZIP=$(INSTALL_DIR)/$(ZIMLET_NAME).zip
+ZIMLET_ZIP=$(IMAGE_ROOT)/zimlets-install/$(PACKAGE)/$(ZIMLET_NAME).zip
 
 JSP_CLASSPATH=`echo "$(JSP_BUILD_JARS)" | tr ' ' ':'`
 
@@ -28,4 +28,4 @@ $(ZIMLET_ZIP):	src/*	src/$(ZIMLET_NAME).xml src/$(ZIMLET_NAME).properties src/$(
 	@echo "$(ZIMLET_NAME).zip" >> $(TOPDIR)/zimlets.list
 
 jsp:
-	@for i in `find -name "*.jsp"` ; do JSP_CLASSPATH="$(JSP_CLASSPATH)" $(COMPILE_JSP) $$i ; done
+	@for i in `find -name "*.jsp"` ; do JSP_CLASSPATH="$(JSP_CLASSPATH)" ZIMBRA_BUILD_ROOT="$(ZIMBRA_BUILD_ROOT)" $(COMPILE_JSP) $$i ; done
