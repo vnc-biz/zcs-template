@@ -1,5 +1,5 @@
 
-include $(TOPDIR)/conf.mk
+include $(TOPDIR)/common.mk
 
 ifeq ($(ZCS_LIB_JARS),)
 IMPORT_CP=`[ -d lib ] && find lib -name "*.jar" -exec "echo" "-n" "{}:" ";"`
@@ -9,11 +9,6 @@ IMPORT_CP=`[ -d lib ] && find lib -name "*.jar" -exec "echo" "-n" "{}:" ";" ; fi
 endif
 
 SRCS=`find -L src -name "*.java"`
-
-ZIMLET_USER_JARDIR=mailboxd/webapps/zimbra/WEB-INF/lib
-ZIMLET_ADMIN_JARDIR=mailboxd/webapps/zimbraAdmin/WEB-INF/lib
-ZIMLET_SERVICE_JARDIR=mailboxd/webapps/service/WEB-INF/lib
-ZIMLET_LIB_JARDIR=lib/jars
 
 all:	check-1	build
 
@@ -60,5 +55,5 @@ clean:
 $(JAR_FILE_NAME):
 	@mkdir -p `dirname "$@"`
 	@mkdir -p classes
-	@if [ "$(IMPORT_CP)" ]; then $(JAVAC) -d classes -cp $(IMPORT_CP) $(SRCS) ; else $(JAVAC) -d classes $(SRCS) ; fi
+	@if [ "$(IMPORT_CP)" ]; then $(JAVAC) $(JAVAC_FLAGS) -d classes -cp $(IMPORT_CP) $(SRCS) ; else $(JAVAC) $(JAVAC_FLAGS) -d classes $(SRCS) ; fi
 	@$(JAR) cvf $(JAR_FILE_NAME) -C classes .

@@ -1,9 +1,5 @@
 
-include $(TOPDIR)/conf.mk
-
-ZIMLET_USER_JARDIR=mailboxd/webapps/zimbra/WEB-INF/lib
-ZIMLET_ADMIN_JARDIR=mailboxd/webapps/zimbraAdmin/WEB-INF/lib
-ZIMLET_SERVICE_JARDIR=mailboxd/webapps/service/WEB-INF/lib
+include $(TOPDIR)/common.mk
 
 JAR_LIBRARY_FILES=$(addprefix lib/,$(JAR_FILES))
 
