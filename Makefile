@@ -23,25 +23,25 @@ $(DEBIAN_DIR)/control:	control.in
 	@mkdir -p $(IMAGE_ROOT)/DEBIAN
 ifeq ($(DEPENDS),)
 	@cat $< | \
-	    sed -E 's/@PACKAGE@/$(PACKAGE)/' | \
-	    sed -E 's/@VERSION@/$(PACKAGING_VERSION)/' | \
-	    sed -E 's/@MAINTAINER@/$(MAINTAINER)/' | \
-	    sed -E 's/@SECTION@/$(SECTION)/' | \
-	    sed -E 's/@ARCHITECTURE@/$(ARCHITECTURE)/' | \
-	    sed -E 's/@PRIORITY@/$(PRIORITY)/' | \
-	    sed -E 's/@DEPENDS@/$(DEPENDS)/' | \
-	    sed -E 's/@DESCRIPTION@/$(DESCRIPTION)/' | \
+	    sed -e 's/@PACKAGE@/$(PACKAGE)/' | \
+	    sed -e 's/@VERSION@/$(PACKAGING_VERSION)/' | \
+	    sed -e 's/@MAINTAINER@/$(MAINTAINER)/' | \
+	    sed -e 's/@SECTION@/$(SECTION)/' | \
+	    sed -e 's/@ARCHITECTURE@/$(ARCHITECTURE)/' | \
+	    sed -e 's/@PRIORITY@/$(PRIORITY)/' | \
+	    sed -e 's/@DEPENDS@/$(DEPENDS)/' | \
+	    sed -e 's/@DESCRIPTION@/$(DESCRIPTION)/' | \
 	    grep -vE "^Depends: " > $@
 else
 	@cat $< | \
-	    sed -E 's/@PACKAGE@/$(PACKAGE)/' | \
-	    sed -E 's/@VERSION@/$(PACKAGING_VERSION)/' | \
-	    sed -E 's/@MAINTAINER@/$(MAINTAINER)/' | \
-	    sed -E 's/@SECTION@/$(SECTION)/' | \
-	    sed -E 's/@ARCHITECTURE@/$(ARCHITECTURE)/' | \
-	    sed -E 's/@PRIORITY@/$(PRIORITY)/' | \
-	    sed -E 's/@DEPENDS@/$(DEPENDS)/' | \
-	    sed -E 's/@DESCRIPTION@/$(DESCRIPTION)/' > $@
+	    sed -e 's/@PACKAGE@/$(PACKAGE)/' | \
+	    sed -e 's/@VERSION@/$(PACKAGING_VERSION)/' | \
+	    sed -e 's/@MAINTAINER@/$(MAINTAINER)/' | \
+	    sed -e 's/@SECTION@/$(SECTION)/' | \
+	    sed -e 's/@ARCHITECTURE@/$(ARCHITECTURE)/' | \
+	    sed -e 's/@PRIORITY@/$(PRIORITY)/' | \
+	    sed -e 's/@DEPENDS@/$(DEPENDS)/' | \
+	    sed -e 's/@DESCRIPTION@/$(DESCRIPTION)/' > $@
 endif
 
 clean:
@@ -54,7 +54,7 @@ upload:	all
 	@if [ ! "$(REDMINE_UPLOAD_URL)" ];      then echo "REDMINE_UPLOAD_URL variable must be set"                  ; exit 1 ; fi
 	@if [ ! "$(REDMINE_UPLOAD_PROJECT)" ];  then echo "REDMINE_UPLOAD_PROJECT variable must be set"              ; exit 1 ; fi
 	@zm_redmine_upload			\
-		-f "$(DEBIAN_PACKAGE)"			\
+		-f "$(DEBIAN_PACKAGE)"		\
 		-l "$(REDMINE_UPLOAD_URL)"	\
 		-u "$(REDMINE_UPLOAD_USER)"	\
 		-w "$(REDMINE_UPLOAD_PASSWORD)"	\
