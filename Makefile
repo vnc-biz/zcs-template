@@ -66,3 +66,5 @@ check-depend:
 
 check_version:
 	@echo "$(PACKAGING_VERSION)"
+
+.PHONY:	$(DEBIAN_DIR)/control
