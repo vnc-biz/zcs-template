@@ -31,7 +31,7 @@ ifeq ($(DEPENDS),)
 	    sed -e 's/@PRIORITY@/$(PRIORITY)/' | \
 	    sed -e 's/@DEPENDS@/$(DEPENDS)/' | \
 	    sed -e 's/@DESCRIPTION@/$(DESCRIPTION)/' | \
-	    grep -vE "^Depends: " > $@
+	    grep -ve "^Depends: " > $@
 else
 	@cat $< | \
 	    sed -e 's/@PACKAGE@/$(PACKAGE)/' | \
