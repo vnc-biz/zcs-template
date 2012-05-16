@@ -41,6 +41,7 @@ DISTDIR=$(DISTPREFIX)/$(PACKAGE)-$(VERSION)
 DISTFILE=$(DISTPREFIX)/$(PACKAGE)-$(VERSION).tar.gz
 
 ## standard locations within ZCS installation tree
+CONTAINER_ZIMLET_JARDIR=mailboxd/webapps/zimlet/WEB-INF/lib
 ZIMLET_USER_JARDIR=mailboxd/webapps/zimbra/WEB-INF/lib
 ZIMLET_ADMIN_JARDIR=mailboxd/webapps/zimbraAdmin/WEB-INF/lib
 ZIMLET_SERVICE_JARDIR=mailboxd/webapps/service/WEB-INF/lib
