@@ -23,3 +23,16 @@ Getting started:
 
     * for development/testing builds, the environment variable $VERSION_SUFFIX
       should be set to produce special versions without changing the code
+
+
+Building java libraries: (without ant)
+
+    * include zcs-java-lib.mk
+    * Variables:
+    ** *ZCS_LIB_JARS*:    specify additional jar's for building (standard libs in $ZIMBRA_ROOT/lib/jars/ are automatically included)
+    ** *JAR_FILE_NAME*:   name of the resulting jar file
+    ** *INSTALL_USER*:    set to y to install the jar into the user frontend container
+    ** *INSTALL_ADMIN*:   set to y to install the jar into the admin frontend container
+    ** *INSTALL_SERVICE*: set to y to install the jar into the soap service container
+    ** *INSTALL_ZIMLET*:  set to y to install the jar into the zimlet container
+    ** *INSTALL_LIB*:     set to y to install the jar into the core library path
