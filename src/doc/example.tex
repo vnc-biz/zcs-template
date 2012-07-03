@@ -1,0 +1,60 @@
+\documentclass[10pt,oneside,a4paper]{scrartcl}
+\usepackage[left=2cm,right=2cm,top=0.5cm,bottom=2cm,head=1cm,top=0.5cm,includeheadfoot]{geometry}
+\usepackage{epsfig}
+\usepackage{ngerman}
+\usepackage{fancyhdr}
+\usepackage[latin1]{inputenc}
+\pagestyle{fancy}
+
+\parindent=0pt
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% text attribution
+\newcommand{\articleStrong}[1]{{\bf #1}}
+\newcommand{\articleQuote}[1]{{\quote #1}}
+\newcommand{\articleSmallNotice}[1]{{\small #1}}
+
+\def\articleBufferTitle{}
+% general stuff
+%\newcommand{\articleTitle}[1]{{\huge \bf #1 \par \ \par}}
+\newcommand{\articleTitle}[1]{
+    \def\articleBufferTitle{
+        \let\articleBufferTitle 
+        \huge \bf #1 \par \ \par
+    }
+}
+
+\newcommand{\Euro}{Euro}
+
+\newcommand{\articleCite}[1]{\quot{#1}}
+\newcommand{\articleCaption}[1]{\section*{#1}}
+\newcommand{\articleListItem}[1]{\item #1}
+\newcommand{\articleList}[1]{\begin{itemize} #1 \end{itemize}}
+\newcommand{\articleText}[1]{\parindent=0pt\par\parindent=0pt\noindent#1\ \\}
+\newcommand{\articleBlockQuote}[1]{\par #1}
+\newcommand{\articleLinkTopic}[2]{#2}
+
+\newcommand{\articleDisplayHeadline}{}
+\newcommand{\articleDisplayTitle}{{\huge \bf \articleBufferTitle}}
+
+
+\newcommand{\articleStart}{\articleDisplayTitle}
+
+\newcommand{\articleHeadline}[1]{\renewcommand{\articleDisplayHeadline}{#1}}
+
+%\chead{\articleDisplayHeadline}
+\cfoot{
+    \articleDisplayHeadline
+    \ \newline
+    \ \newline
+}
+
+%\chead{...}
+\lhead{}
+\rhead{}
+
+
+\begin{document}
+    Dummy
+\end{document}

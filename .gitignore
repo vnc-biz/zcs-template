@@ -7,3 +7,4 @@ classes
 /image
 /zimlets.list
 *.deb
+/src/doc/example.pdf
