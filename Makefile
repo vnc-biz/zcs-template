@@ -81,7 +81,7 @@ policy-dos2unix:
 
 policy-java:
 	@find -name "*.java" \
-	    | xargs astyle --style=allman --indent=tab --suffix=none --indent-switches 2>&1 | grep -ve "^unchanged" || true
+	    | xargs astyle --style=java --indent=tab --suffix=none --indent-switches 2>&1 | grep -ve "^unchanged" || true
 
 policy-xml:
 	@find -name "*.xml" | ( \
