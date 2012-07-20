@@ -8,3 +8,4 @@ DEPENDS=
 DESCRIPTION=Zimlet package template
 REDMINE_UPLOAD_PROJECT=zcs-extension-template
 REDMINE_UPLOAD_URL=https://redmine.vnc.biz/redmine/
+LICENSE=GPLv2
