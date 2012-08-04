@@ -8,3 +8,5 @@ classes
 /zimlets.list
 *.deb
 /src/doc/example.pdf
+/src/doc/example.aux
+/src/doc/example.log

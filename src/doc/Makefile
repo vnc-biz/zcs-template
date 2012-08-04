@@ -2,4 +2,5 @@
 TOPDIR=../../
 DOCUMENT_NAME=example
 
-include $(TOPDIR)/zcs-latex-doc.mk
+include $(TOPDIR)/common.mk
+include $(ZIMBRA_BUILD_ROOT)/extensions-extra/zmpkg/mk/zcs-latex-doc.mk
